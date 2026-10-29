@@ -4,28 +4,38 @@
 
   const button = form.querySelector('button[type="submit"]');
   const status = form.querySelector(".contact-form__status");
-  const messages = {
-    sending: "Gönderiliyor…",
-    success: "Teşekkürler, mesajınız iletildi. En kısa sürede dönüş yapacağım.",
-    error: "Mesajınız gönderilemedi. Lütfen biraz sonra yeniden deneyin.",
+  const texts = {
+    tr: {
+      sending: "Gönderiliyor…",
+      success: "Teşekkürler, mesajınız iletildi. En kısa sürede dönüş yapacağım.",
+      error: "Mesajınız gönderilemedi. Lütfen biraz sonra yeniden deneyin.",
+      required: "Lütfen bu alanı doldurun.",
+      email: "Lütfen geçerli bir e-posta adresi girin.",
+      consent: "Mesajınızın iletilebilmesi için bu onayı vermeniz gerekir.",
+    },
+    en: {
+      sending: "Sending…",
+      success: "Thank you, your message has been sent. I will get back to you as soon as possible.",
+      error: "Your message could not be sent. Please try again later.",
+      required: "Please fill out this field.",
+      email: "Please enter a valid email address.",
+      consent: "Your consent is required to send your message.",
+    },
   };
+  const text = texts[document.documentElement.lang] ?? texts.tr;
 
   const validationMessageFor = (field) => {
-    if (field.validity.valueMissing) {
-      return field.type === "checkbox"
-        ? "Mesajınızın iletilebilmesi için bu onayı vermeniz gerekir."
-        : "Lütfen bu alanı doldurun.";
-    }
-    if (field.validity.typeMismatch) return "Lütfen geçerli bir e-posta adresi girin.";
+    if (field.validity.valueMissing) return field.type === "checkbox" ? text.consent : text.required;
+    if (field.validity.typeMismatch) return text.email;
     return "";
   };
 
   const setStatus = (state) => {
     status.dataset.state = state;
-    status.textContent = messages[state];
+    status.textContent = text[state];
   };
 
-  // Doğrulama uyarısı tarayıcının dilinde değil, sayfanın dilinde (Türkçe) çıksın.
+  // Doğrulama uyarısı tarayıcının dilinde değil, sayfanın dilinde çıksın.
   form.addEventListener("invalid", (event) => {
     const field = event.target;
     field.setCustomValidity("");
@@ -52,7 +62,7 @@
       form.reset();
       setStatus("success");
     } catch (error) {
-      console.error("İletişim formu gönderilemedi:", error);
+      console.error("Contact form submission failed:", error);
       setStatus("error");
     } finally {
       button.disabled = false;
