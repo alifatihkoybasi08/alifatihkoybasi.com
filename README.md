@@ -125,11 +125,12 @@ Squarespace'te kayıtlıdır ve DNS orada kalır. Domainde Google Workspace e-po
    `2606:50c0:8002::153`, `2606:50c0:8003::153`.
 5. DNS yayılınca (birkaç saati bulabilir) Pages ayarlarında "Enforce HTTPS" işaretlenir.
 
-**Sertifika çıkmıyorsa:** Özel domain DNS değişikliğinden önce tanımlandıysa GitHub'ın ilk sertifika
-denemesi eski kayıtlara çarpar ve kendiliğinden yinelenmeyebilir. Pages ayarlarında Custom domain
-"Remove" ile kaldırılıp yeniden yazılır; uyarı "certificate has not yet been issued" olarak değişir ve
-sertifika en geç bir saatte gelir (2026-10-29 kurulumunda yaşandı). Eski Squarespace sitesi
-`Strict-Transport-Security` (180 gün) gönderdiği için bu domain tarayıcılarda yalnız HTTPS ile açılır;
-sertifika gelene kadar `NET::ERR_CERT_COMMON_NAME_INVALID` görülmesi bu yüzdendir.
+**Sertifika gecikirse:** GitHub sertifikayı, domain Pages ayarlarındaki DNS denetiminden geçince ister
+("DNS check successful"). Eski kayıtların önbellek süresi (TTL) dolmadan bu denetim geçmeyebilir;
+Squarespace'teki eski kayıtların TTL'i 4 saatti. 2026-10-29 kurulumunda DNS 16:40'ta değişti, denetim
+20:42'de geçti ve sertifika (Let's Encrypt; `alifatihkoybasi.com` ve `www`) bir dakika içinde geldi. Arada
+domaini iki kez kaldırıp yeniden eklemek süreyi kısaltmadı. Sertifikayı GitHub kendisi yeniler. Eski
+Squarespace sitesi `Strict-Transport-Security` (180 gün) gönderdiği için domain tarayıcılarda yalnız HTTPS
+ile açılır; sertifika gelene kadar görülen `NET::ERR_CERT_COMMON_NAME_INVALID` uyarısı bu yüzdendir.
 
 Kayıt adresleri: [GitHub Docs, custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
