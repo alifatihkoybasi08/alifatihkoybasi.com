@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src https://api.web3forms.com; form-action https://api.web3forms.com https://web3forms.com; base-uri 'none'; object-src 'none'">
+  <title>Ali Fatih Köybaşı</title>
+  <meta name="description" content="Ali Fatih Köybaşı'nın kişisel web sitesi. Bana ulaşmak için iletişim formunu kullanabilirsiniz.">
+  <link rel="canonical" href="https://alifatihkoybasi.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="Ali Fatih Köybaşı">
+  <meta property="og:title" content="Ali Fatih Köybaşı">
+  <meta property="og:description" content="Ali Fatih Köybaşı'nın kişisel web sitesi.">
+  <meta property="og:url" content="https://alifatihkoybasi.com/">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f4ef">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121314">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/cormorant-garamond-latin-ext-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/contact.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ali Fatih Köybaşı","url":"https://alifatihkoybasi.com/"}</script>
+</head>
+<body>
+  <main class="page">
+    <header class="identity">
+      <h1 class="identity__name"><span class="identity__part">ALİ FATİH</span> <span class="identity__part">KÖYBAŞI</span></h1>
+    </header>
+
+    <section class="contact card" aria-labelledby="contact-title">
+      <h2 class="contact__title" id="contact-title">Bana Ulaşın</h2>
+
+      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="post">
+        <input type="hidden" name="access_key" value="">
+        <input type="hidden" name="subject" value="alifatihkoybasi.com üzerinden yeni mesaj">
+        <input type="hidden" name="from_name" value="alifatihkoybasi.com">
+        <input class="contact-form__trap" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+
+        <div class="contact-form__grid">
+          <div class="field">
+            <label class="field__label" for="cf-name">Ad Soyad<span class="field__required" aria-hidden="true">*</span></label>
+            <input class="field__input" id="cf-name" name="name" type="text" autocomplete="name" maxlength="100" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="cf-email">E-posta<span class="field__required" aria-hidden="true">*</span></label>
+            <input class="field__input" id="cf-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="cf-phone">Telefon</label>
+            <input class="field__input" id="cf-phone" name="phone" type="tel" autocomplete="tel" maxlength="30">
+          </div>
+          <div class="field field--full">
+            <label class="field__label" for="cf-message">Mesajınız<span class="field__required" aria-hidden="true">*</span></label>
+            <textarea class="field__input field__input--area" id="cf-message" name="message" rows="3" maxlength="5000" required></textarea>
+          </div>
+        </div>
+
+        <div class="contact-form__footer">
+          <div class="consent">
+            <input class="consent__input" id="cf-consent" name="kvkk_acik_riza" type="checkbox" value="Verildi" required>
+            <label class="consent__label" for="cf-consent">Kişisel verilerimin <a href="kvkk.html" target="_blank" rel="noopener">Aydınlatma Metni</a>'nde belirtilen şekilde aktarılmasına açık rıza veriyorum.<span class="field__required" aria-hidden="true">*</span></label>
+          </div>
+          <button class="button" type="submit">Gönder</button>
+        </div>
+
+        <p class="contact-form__status" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__text">© Ali Fatih Köybaşı</p>
+    <a class="site-footer__link" href="kvkk.html">KVKK Aydınlatma Metni</a>
+  </footer>
+</body>
+</html>
