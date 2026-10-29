@@ -360,7 +360,8 @@ a:focus-visible {
   color: var(--color-success);
 }
 
-.contact-form__status[data-state="error"] {
+.contact-form__status[data-state="error"],
+.contact-form__status[data-state="captcha"] {
   color: var(--color-error);
 }
 
