@@ -16,7 +16,7 @@ dosyalar olduğu gibi yayınlanır.
 | `assets/js/contact.js` | Formu sayfadan ayrılmadan gönderir; mesajlar sayfanın `lang` değerine göre TR/EN |
 | `assets/icons/social.svg` | Sosyal medya ikonları (tek dosya, `<use href="…#icon-linkedin">` ile kullanılır); Font Awesome Free 7.3.1, CC BY 4.0, lisans notu dosyanın içinde |
 | `assets/fonts/` | Cormorant Garamond 500 (latin + latin-ext), lisans `OFL.txt` (SIL OFL 1.1), kaynak `@fontsource/cormorant-garamond@5.3.0` |
-| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Sekme ve ana ekran simgeleri |
+| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Sekme ve ana ekran simgeleri: kaligrafik "A" (verilen görselden potrace ile vektörleştirildi), koyu zemin `#1b1b1d`, bronz `#c4a676`. Sekme ikonunda çizgi küçük boyutta okunsun diye hafif kalınlaştırılmıştır. Simge değişince sayfalardaki `?v=` sürümü artırılır, yoksa tarayıcılar eskisini önbellekten gösterir |
 
 ## İki dil
 
