@@ -35,6 +35,10 @@ sayfa kaynağında görünür; Web3Forms böyle tasarlanmıştır, anahtar yaln�
 Gelen her e-postada `kvkk_acik_riza: Verildi` satırı bulunur; ziyaretçinin yurt dışına aktarım için
 verdiği açık rızanın kaydıdır, e-postayla birlikte saklanır.
 
+Web3Forms paneli (app.web3forms.com) > form ayarları > Advanced Options > "Data retention policy"
+**7 days** olarak ayarlıdır: Web3Forms'taki kopyalar 7 gün sonra silinir, mesajın kendisi info@ kutusunda
+kalır. `kvkk.html` 6. bölüm bu süreyi beyan eder; ayar değişirse metin de değişir.
+
 JavaScript kapalıysa form yine çalışır; ziyaretçi gönderimden sonra Web3Forms'un teşekkür sayfasına gider.
 
 ## KVKK metninin güncel tutulması
