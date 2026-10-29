@@ -18,7 +18,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin-ext-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/site.css?v=3">
 </head>
 <body>
   <nav class="lang-switch" aria-label="Dil seçimi">
@@ -50,6 +50,7 @@
           <li class="doc__item"><strong>İletişim bilgisi:</strong> e-posta adresiniz ve paylaşmanız hâlinde telefon numaranız.</li>
           <li class="doc__item"><strong>Talep bilgisi:</strong> mesajınızın içeriği.</li>
           <li class="doc__item"><strong>Onay bilgisi:</strong> formu gönderirken verdiğiniz açık rızaya ilişkin kayıt.</li>
+          <li class="doc__item"><strong>İşlem güvenliği bilgisi:</strong> formu gönderdiğinizde, otomatik (bot) gönderimleri ayırt etmek için hCaptcha'nın işlediği IP adresi, tarayıcı ve cihaz bilgileri.</li>
         </ul>
         <p class="doc__text">Mesajınızda sağlık, din, siyasi düşünce gibi özel nitelikli kişisel verilerinize yer vermemeniz rica olunur.</p>
       </section>
@@ -58,6 +59,7 @@
         <h2 class="doc__heading" id="kvkk-3">3. İşleme amaçları ve hukuki sebepler</h2>
         <ul class="doc__list">
           <li class="doc__item">Mesajınızı almak, değerlendirmek ve size yanıt vermek. Hukuki sebep: Veri Sorumlusunun meşru menfaati (KVKK m.5/2-f); mesajınız bir iş veya hizmet talebine ilişkinse bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması (KVKK m.5/2-c).</li>
+          <li class="doc__item">Formun otomatik (bot) ve istenmeyen gönderimlere karşı korunması. Hukuki sebep: Veri Sorumlusunun meşru menfaati (KVKK m.5/2-f).</li>
           <li class="doc__item">Olası uyuşmazlıklarda bir hakkın tesisi, kullanılması veya korunması. Hukuki sebep: KVKK m.5/2-e.</li>
           <li class="doc__item">Yetkili kamu kurum ve kuruluşlarının hukuka uygun taleplerinin karşılanması. Hukuki sebep: Veri Sorumlusunun hukuki yükümlülüğünü yerine getirebilmesi için zorunlu olması (KVKK m.5/2-ç).</li>
         </ul>
@@ -65,15 +67,16 @@
 
       <section class="doc__section" aria-labelledby="kvkk-4">
         <h2 class="doc__heading" id="kvkk-4">4. Toplama yöntemi</h2>
-        <p class="doc__text">Kişisel verileriniz, sitedeki iletişim formunu doldurup göndermeniz yoluyla elektronik ortamda toplanır.</p>
+        <p class="doc__text">Kişisel verileriniz, sitedeki iletişim formunu doldurup göndermeniz yoluyla elektronik ortamda toplanır. İşlem güvenliği bilgileri, formu gönderdiğinizde hCaptcha tarafından otomatik yollarla toplanır.</p>
       </section>
 
       <section class="doc__section" aria-labelledby="kvkk-5">
         <h2 class="doc__heading" id="kvkk-5">5. Aktarım ve yurt dışına aktarım</h2>
-        <p class="doc__text">Formla gönderdiğiniz bilgiler, mesajınızın Veri Sorumlusuna ulaştırılması ve size yanıt verilmesi amacıyla, bu amaçla sınırlı olarak aşağıdaki hizmet sağlayıcılara aktarılır. Bu hizmet sağlayıcıların sunucuları yurt dışındadır:</p>
+        <p class="doc__text">Formla gönderdiğiniz bilgiler ve formu gönderirken oluşan işlem güvenliği bilgileri, mesajınızın Veri Sorumlusuna ulaştırılması, formun kötüye kullanıma karşı korunması ve size yanıt verilmesi amacıyla, bu amaçlarla sınırlı olarak aşağıdaki hizmet sağlayıcılara aktarılır. Bu hizmet sağlayıcıların sunucuları yurt dışındadır:</p>
         <ul class="doc__list">
           <li class="doc__item"><strong>Web3Forms:</strong> formdaki bilgileri e-posta olarak Veri Sorumlusuna ileten form hizmeti.</li>
           <li class="doc__item"><strong>Google (Google Workspace):</strong> mesajın ulaştığı ve yazışmaların yürütüldüğü e-posta hizmeti.</li>
+          <li class="doc__item"><strong>hCaptcha (Intuition Machines, Inc., ABD):</strong> formu otomatik gönderimlere karşı koruyan güvenlik hizmeti; yalnız formu gönderdiğinizde devreye girer.</li>
         </ul>
         <p class="doc__text">Bu aktarım, formu gönderirken vereceğiniz açık rızaya dayanır (KVKK m.9/6-a). Açık rıza vermediğiniz sürece mesajınız form üzerinden iletilmez.</p>
         <p class="doc__text"><strong>Muhtemel riskler:</strong> Verilerinizin aktarıldığı ülkelerde Türkiye'dekiyle aynı düzeyde bir kişisel veri koruması bulunmayabilir; bu ülkelerin yetkili makamları kendi mevzuatları uyarınca verilere erişebilir ve haklarınızı bu ülkelerde kullanmanız güçleşebilir.</p>
@@ -87,7 +90,8 @@
 
       <section class="doc__section" aria-labelledby="kvkk-7">
         <h2 class="doc__heading" id="kvkk-7">7. Barındırma, çerezler ve bağlantılar</h2>
-        <p class="doc__text">Bu site, GitHub, Inc. (ABD) tarafından sağlanan GitHub Pages altyapısında barındırılır. GitHub, siteyi ziyaret edenlerin IP adresi gibi teknik verilerini hizmetin güvenliği ve kendi yasal yükümlülükleri kapsamında, <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">kendi gizlilik bildirimine</a> göre işler; Veri Sorumlusunun bu kayıtlara erişimi yoktur. Sitede çerez ve benzeri izleme teknolojileri kullanılmaz, ziyaretçi istatistiği tutulmaz.</p>
+        <p class="doc__text">Bu site, GitHub, Inc. (ABD) tarafından sağlanan GitHub Pages altyapısında barındırılır. GitHub, siteyi ziyaret edenlerin IP adresi gibi teknik verilerini hizmetin güvenliği ve kendi yasal yükümlülükleri kapsamında, <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">kendi gizlilik bildirimine</a> göre işler; Veri Sorumlusunun bu kayıtlara erişimi yoktur. Site çerez kullanmaz ve ziyaretçi istatistiği tutmaz. Formu gönderdiğinizde devreye giren hCaptcha, bot tespiti için kendi alan adında çerez ve benzeri teknolojiler kullanabilir.</p>
+        <p class="doc__text">Bu site hCaptcha ile korunmaktadır; hCaptcha <a href="https://www.hcaptcha.com/privacy">Gizlilik Politikası</a> ve <a href="https://www.hcaptcha.com/terms">Hizmet Şartları</a> geçerlidir.</p>
         <p class="doc__text">Sitedeki sosyal medya bağlantıları düz bağlantılardır; bu platformlardan sitede içerik gösterilmez ve bir bağlantıya tıklayana kadar onlarla veri paylaşılmaz. Bağlantıya tıkladığınızda ilgili platformun kendi gizlilik politikası geçerlidir.</p>
       </section>
 

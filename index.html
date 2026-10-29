@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src https://api.web3forms.com; form-action https://api.web3forms.com https://web3forms.com; base-uri 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://hcaptcha.com https://*.hcaptcha.com; style-src 'self' https://hcaptcha.com https://*.hcaptcha.com; frame-src https://hcaptcha.com https://*.hcaptcha.com; font-src 'self'; img-src 'self'; connect-src https://api.web3forms.com https://hcaptcha.com https://*.hcaptcha.com; form-action https://api.web3forms.com https://web3forms.com; base-uri 'none'; object-src 'none'">
   <title>Ali Fatih Köybaşı</title>
   <meta name="description" content="Ali Fatih Köybaşı'nın kişisel web sitesi. Bana ulaşmak için iletişim formunu kullanabilirsiniz.">
   <link rel="canonical" href="https://alifatihkoybasi.com/">
@@ -25,8 +25,8 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin-ext-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css">
-  <script src="assets/js/contact.js" defer></script>
+  <link rel="stylesheet" href="assets/css/site.css?v=3">
+  <script src="assets/js/contact.js?v=3" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ali Fatih Köybaşı","url":"https://alifatihkoybasi.com/","sameAs":["https://www.linkedin.com/in/alifatihk%C3%B6yba%C5%9F%C4%B1/","https://www.instagram.com/alifatihkoybasi/","https://www.facebook.com/ali.fatih.kybs/","https://x.com/alifatihkybs","https://www.threads.com/@alifatihkoybasi","https://github.com/alifatihkoybasi08"]}</script>
 </head>
 <body>
@@ -85,6 +85,7 @@
           <button class="button" type="submit">Gönder</button>
         </div>
 
+        <div class="contact-form__captcha" id="cf-captcha"></div>
         <p class="contact-form__status" role="status"></p>
       </form>
     </section>

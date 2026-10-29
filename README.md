@@ -16,7 +16,7 @@ dosyalar olduğu gibi yayınlanır.
 | `assets/js/contact.js` | Formu sayfadan ayrılmadan gönderir; mesajlar sayfanın `lang` değerine göre TR/EN |
 | `assets/icons/social.svg` | Sosyal medya ikonları (tek dosya, `<use href="…#icon-linkedin">` ile kullanılır); Font Awesome Free 7.3.1, CC BY 4.0, lisans notu dosyanın içinde |
 | `assets/fonts/` | Cormorant Garamond 500 (latin + latin-ext), lisans `OFL.txt` (SIL OFL 1.1), kaynak `@fontsource/cormorant-garamond@5.3.0` |
-| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Sekme ve ana ekran simgeleri: kaligrafik "A" (verilen görselden potrace ile vektörleştirildi), koyu zemin `#1b1b1d`, bronz `#c4a676`. Sekme ikonunda çizgi küçük boyutta okunsun diye hafif kalınlaştırılmıştır. Simge değişince sayfalardaki `?v=` sürümü artırılır, yoksa tarayıcılar eskisini önbellekten gösterir |
+| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Sekme ve ana ekran simgeleri: kaligrafik "A" (verilen görselden potrace ile vektörleştirildi), koyu zemin `#1b1b1d`, bronz `#c4a676`. Sekme ikonunda çizgi küçük boyutta okunsun diye hafif kalınlaştırılmıştır. Simge değişince sayfalardaki `?v=` sürümü artırılır, yoksa tarayıcılar eskisini önbellekten gösterir. `site.css` ve `contact.js` bağlantıları da `?v=` taşır; bu dosyalar değişince dört sayfadaki sürüm birlikte artırılır |
 
 ## İki dil
 
@@ -55,7 +55,18 @@ Web3Forms paneli (app.web3forms.com) > form ayarları > Advanced Options > "Data
 **7 days** olarak ayarlıdır: Web3Forms'taki kopyalar 7 gün sonra silinir, mesajın kendisi info@ kutusunda
 kalır. `kvkk.html` 6. bölüm bu süreyi beyan eder; ayar değişirse metin de değişir.
 
-JavaScript kapalıysa form yine çalışır; ziyaretçi gönderimden sonra Web3Forms'un teşekkür sayfasına gider.
+**Spam koruması: hCaptcha (görünmez mod).** Web3Forms panelinde form için hCaptcha açıktır; Web3Forms bu
+yüzden `h-captcha-response` jetonu taşımayan gönderimi reddeder. `contact.js` hCaptcha'yı Web3Forms'un ücretsiz
+plan anahtarıyla (`50b2fe65-b00b-4b9e-ad62-3ba471098be2`) yalnız "Gönder"e basıldığında yükler; tarayıcı
+doğrulaması ve açık rıza kutusu geçilmeden hCaptcha'ya veri gitmez. Gerekirse bulmaca açılır pencerede çıkar,
+jeton mesaja eklenir ve her gönderimden sonra sıfırlanır. Sayfaların CSP'si `hcaptcha.com` ve `*.hcaptcha.com`
+alan adlarına izin verir. hCaptcha'nın görünmez mod için önerdiği "This site is protected by hCaptcha…" notu,
+ana sayfa sade kalsın diye KVKK metninin 7. bölümündedir (hCaptcha bunu formun bulunduğu sayfada önerir; metin
+formdaki onay kutusundan ve alt bilgiden bağlıdır). KVKK metni 2, 3, 4, 5 ve 7. bölümlerde hCaptcha'yı anlatır.
+Panelde hCaptcha kapatılırsa form yine çalışır (jeton yok sayılır), ama o durumda KVKK'daki hCaptcha bölümleri
+kaldırılmalıdır.
+
+JavaScript kapalıysa form doğrudan Web3Forms'a gider; hCaptcha açıkken bu gönderim reddedilir.
 
 ## KVKK metninin güncel tutulması
 
