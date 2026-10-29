@@ -14,9 +14,12 @@ dosyalar olduğu gibi yayınlanır.
 | `en/privacy.html` | KVKK metninin İngilizcesi; "Türkçe metin esastır" notu taşır |
 | `assets/css/site.css` | Stiller: açık/koyu tema, mobil düzen, dört sayfa için ortak |
 | `assets/js/contact.js` | Formu sayfadan ayrılmadan gönderir; mesajlar sayfanın `lang` değerine göre TR/EN |
+| `assets/js/content-filter.js` | Ad Soyad ve Mesaj alanlarında uygunsuz ifade denetimi; kelimeleri değil özetlerini tanır |
+| `assets/js/content-filter-data.js` | Denetim listesinin özetleri; `tools/blocklist.mjs` üretir, elle düzenlenmez |
+| `tools/blocklist.mjs` | Açık listeden özet dosyasını üreten Node.js betiği; sitenin çalışması için gerekmez |
 | `assets/icons/social.svg` | Sosyal medya ikonları (tek dosya, `<use href="…#icon-linkedin">` ile kullanılır); Font Awesome Free 7.3.1, CC BY 4.0, lisans notu dosyanın içinde |
 | `assets/fonts/` | Cormorant Garamond 500 (latin + latin-ext), lisans `OFL.txt` (SIL OFL 1.1), kaynak `@fontsource/cormorant-garamond@5.3.0` |
-| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Sekme ve ana ekran simgeleri: kaligrafik "A" (verilen görselden potrace ile vektörleştirildi), koyu zemin `#1b1b1d`, bronz `#c4a676`. Sekme ikonunda çizgi küçük boyutta okunsun diye hafif kalınlaştırılmıştır. Simge değişince sayfalardaki `?v=` sürümü artırılır, yoksa tarayıcılar eskisini önbellekten gösterir. `site.css` ve `contact.js` bağlantıları da `?v=` taşır; bu dosyalar değişince dört sayfadaki sürüm birlikte artırılır |
+| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Sekme ve ana ekran simgeleri: kaligrafik "A" (verilen görselden potrace ile vektörleştirildi), koyu zemin `#1b1b1d`, bronz `#c4a676`. Sekme ikonunda çizgi küçük boyutta okunsun diye hafif kalınlaştırılmıştır. Simge değişince sayfalardaki `?v=` sürümü artırılır, yoksa tarayıcılar eskisini önbellekten gösterir. `site.css` ve betik bağlantıları da `?v=` taşır; bu dosyalar değişince onları yükleyen sayfalardaki sürüm birlikte artırılır |
 
 ## İki dil
 
@@ -67,6 +70,28 @@ Panelde hCaptcha kapatılırsa form yine çalışır (jeton yok sayılır), ama 
 kaldırılmalıdır.
 
 JavaScript kapalıysa form doğrudan Web3Forms'a gider; hCaptcha açıkken bu gönderim reddedilir.
+
+## Uygunsuz ifade denetimi
+
+"Gönder"e basıldığında Ad Soyad ve Mesaj alanları küfür, hakaret ve argo için denetlenir. Uygunsuz ifade
+varsa form gönderilmez, alanda "Bu alanda uygunsuz bir ifade var. Lütfen düzenleyin." uyarısı çıkar ve
+hCaptcha'ya da Web3Forms'a da hiçbir şey gitmez. Büyük-küçük harf, Türkçe karakterli ve karaktersiz yazım,
+harf tekrarı, rakamla gizleme, harfleri boşlukla ayırma ve görünmez karakter ekleme de yakalanır.
+
+Depoda kelimelerin kendisi yoktur: `content-filter-data.js` yalnız özetlerini (cyrb53) taşır. Özet bir şifre
+değildir, elinde kelime listesi olan biri eşleştirebilir; amaç bu kelimelerin herkese açık depoda düz metin
+durmamasıdır. Açık liste depo dışında, bakımı yapan kişide durur ve yüklenmez. Liste değişince:
+
+```bash
+node tools/blocklist.mjs <liste.txt>
+```
+
+Betik `content-filter-data.js`'i yeniden yazar; ardından iki ana sayfadaki `?v=` sürümü artırılıp dosya
+yüklenir. Listede her satır bir işaretle başlar: `=` tam sözcük, `+` kök (ekli halleriyle, en az 4 harf),
+`!` hiç engellenmeyecek sözcük (masum bir kelime yanlışlıkla yakalanırsa).
+
+Denetim tarayıcıda çalışır; formu atlayıp Web3Forms'a doğrudan istek gönderen biri onu aşabilir (hCaptcha yine
+geçerlidir). Amaç formu kullanan ziyaretçiyi durdurmaktır.
 
 ## KVKK metninin güncel tutulması
 
