@@ -17,6 +17,7 @@
       required: "Lütfen bu alanı doldurun.",
       email: "Lütfen geçerli bir e-posta adresi girin.",
       consent: "Mesajınızın iletilebilmesi için bu onayı vermeniz gerekir.",
+      language: "Bu alanda uygunsuz bir ifade var. Lütfen düzenleyin.",
     },
     en: {
       verifying: "Running a quick security check…",
@@ -27,13 +28,18 @@
       required: "Please fill out this field.",
       email: "Please enter a valid email address.",
       consent: "Your consent is required to send your message.",
+      language: "This field contains inappropriate language. Please edit it.",
     },
   };
   const text = texts[lang];
 
+  const SCREENED_FIELDS = new Set(["name", "message"]);
+  const hasBadLanguage = (field) => SCREENED_FIELDS.has(field.name) && window.ContentFilter?.contains(field.value) === true;
+
   const validationMessageFor = (field) => {
     if (field.validity.valueMissing) return field.type === "checkbox" ? text.consent : text.required;
     if (field.validity.typeMismatch) return text.email;
+    if (hasBadLanguage(field)) return text.language;
     return "";
   };
 
@@ -89,6 +95,13 @@
   // JS kapalıysa form doğrudan Web3Forms'a POST eder; hCaptcha açıkken bu yol reddedilir.
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    // Uygunsuz ifade düzeltilmeden hCaptcha'ya da Web3Forms'a da hiçbir şey gitmez.
+    const flagged = [...form.elements].find(hasBadLanguage);
+    if (flagged) {
+      flagged.setCustomValidity(text.language);
+      flagged.reportValidity();
+      return;
+    }
     button.disabled = true;
     setStatus("verifying");
 
