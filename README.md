@@ -19,7 +19,7 @@ dosyalar olduğu gibi yayınlanır.
 | `tools/blocklist.mjs` | Açık listeden özet dosyasını üreten Node.js betiği; sitenin çalışması için gerekmez |
 | `assets/icons/social.svg` | Sosyal medya ikonları (tek dosya, `<use href="…#icon-linkedin">` ile kullanılır); Font Awesome Free 7.3.1, CC BY 4.0, lisans notu dosyanın içinde |
 | `assets/fonts/` | Cormorant Garamond 500 (latin + latin-ext), lisans `OFL.txt` (SIL OFL 1.1), kaynak `@fontsource/cormorant-garamond@5.3.0` |
-| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Sekme ve ana ekran simgeleri: kaligrafik "A" (verilen görselden potrace ile vektörleştirildi), koyu zemin `#1b1b1d`, bronz `#c4a676`. Sekme ikonunda çizgi küçük boyutta okunsun diye hafif kalınlaştırılmıştır. Simge değişince sayfalardaki `?v=` sürümü artırılır, yoksa tarayıcılar eskisini önbellekten gösterir. `site.css` ve betik bağlantıları da `?v=` taşır; bu dosyalar değişince onları yükleyen sayfalardaki sürüm birlikte artırılır |
+| `favicon.svg`, `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png` | Sekme ve ana ekran simgeleri: kaligrafik "A" (verilen görselden potrace ile vektörleştirildi), koyu zemin `#1b1b1d`, bronz `#c4a676`. Sekme ikonunda çizgi küçük boyutta okunsun diye hafif kalınlaştırılmıştır. `favicon-192.png` Google arama sonucundaki simge içindir: Google aramanın desteklediği biçimler arasında SVG yok ve 48 px'ten büyük simge öneriliyor. Dosya `rsvg-convert -w 192 -h 192 favicon.svg -o favicon-192.png` ile üretilir; simge değişince bu dosya da yeniden üretilir. Simge değişince sayfalardaki `?v=` sürümü artırılır, yoksa tarayıcılar eskisini önbellekten gösterir. `site.css` ve betik bağlantıları da `?v=` taşır; bu dosyalar değişince onları yükleyen sayfalardaki sürüm birlikte artırılır |
 
 ## İki dil
 
