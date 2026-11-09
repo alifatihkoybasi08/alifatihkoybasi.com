@@ -132,13 +132,28 @@ a:focus-visible {
   text-align: center;
 }
 
-.identity::after {
+/* Adın altındaki ayraç: iki ince bronz çizgi, ortada kaligrafik "A" (assets/icons/mark.svg). */
+.identity__rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-top: clamp(0.875rem, 2.2vh, 1.5rem);
+  color: var(--color-accent);
+}
+
+.identity__rule::before,
+.identity__rule::after {
   content: "";
-  display: block;
-  width: 3.5rem;
+  width: 1.75rem;
   height: 1px;
-  margin: clamp(0.875rem, 2.2vh, 1.5rem) auto 0;
-  background: var(--color-accent);
+  background: currentColor;
+}
+
+.identity__mark {
+  width: 1.125rem;
+  height: 1.4rem;
+  fill: currentColor;
 }
 
 /* padding-left, satır sonundaki harf aralığını dengeleyip adı tam ortalar. */
